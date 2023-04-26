@@ -1,24 +1,21 @@
 import { NgModule } from "@angular/core";
-import { Routes } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { AboutComponent } from "./pages/about/about.component";
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from "./shared/header/header.component";
-export class Approutingmodule {}
+import { PortfolioComponent } from "./pages/portfolio/portfolio.component";
+import { ItemComponent } from "./pages/item/item.component";
+import { TerminosComponent } from "./pages/terminos/terminos.component";
+
 const app_routes: Routes = [
-    { path: 'about', component:AboutComponent },
-    { path: 'footer', component:FooterComponent },
-    { path: 'header', component:HeaderComponent },
-    RouterModule
-    ];
+{ path: '', component: PortfolioComponent}, 
+{ path: 'about', component: AboutComponent},
+{ path: 'item', component: ItemComponent},
+{ path:  'terminos', component: TerminosComponent},
+{ path: '**', pathMatch: 'full', redirectTo: ''},
+];
+@NgModule ({
+imports: [RouterModule.forRoot(app_routes, {useHash: true})],
+exports: [RouterModule],
+})
 
-    @NgModule ({
-        imports: [
-        RouterModule.forRoot( app_routes),
-    HeaderComponent,
-    FooterComponent,
-    AboutComponent
-        ]
-        });
-
-        export class AppRoutingModule {
-        }
+export class AppRoutingModule {
+}
